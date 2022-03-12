@@ -1,0 +1,33 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+class Rectangle
+{
+private:
+    float a, b;
+public:
+    void set(float _a, float _b)
+    {
+        a = _a;
+        b = _b;
+    }
+    void get() { cout << "a: " << a << "\nb: " << b << endl; }
+    void Perimeter() { cout << "Периметр: " << (a + b) * 2 << endl; }
+    void Square() { cout << "Площадь: " << a * b << endl; }
+};
+
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    Rectangle ob;
+    ob.set(5, 8);
+    ob.get();
+    ob.Perimeter();
+    ob.Square();
+
+    cout << "\nОперация выполнена\n";
+    
+    return 0;
+}

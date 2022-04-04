@@ -7,27 +7,51 @@ class Rectangle
 {
 private:
     float a, b;
+
 public:
-    void set(float _a, float _b)
+    void SetRect(float _a, float _b)
     {
         a = _a;
         b = _b;
     }
-    void get() { cout << "a: " << a << "\nb: " << b << endl; }
-    void Perimeter() { cout << "Периметр: " << (a + b) * 2 << endl; }
-    void Square() { cout << "Площадь: " << a * b << endl; }
+    void GetRect() 
+    { 
+        cout << "a = " << a << "\nb = " << b << endl;
+    }
+
+    void Perimeter()
+    {
+        if (a > 0, b > 0)
+        {
+            cout << "Периметр = " << (a + b) * 2 << endl;
+        }
+        else
+        {
+            cout << "Ошибка\n";
+        };
+    }
+
+    void Square() 
+    { 
+        if (a > 0, b > 0)
+        {
+            cout << "Площадь = " << a * b << endl;
+        }
+        else
+        {
+            cout << "Ошибка\n";
+        }
+        
+    }
 };
 
 int main()
 {
     setlocale(LC_ALL, "RU");
     Rectangle ob;
-    ob.set(5, 8);
-    ob.get();
+    ob.SetRect(-3, -5);
+    ob.GetRect();
     ob.Perimeter();
     ob.Square();
-
-    cout << "\nОперация выполнена\n";
-    
     return 0;
 }

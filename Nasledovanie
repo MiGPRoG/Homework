@@ -1,90 +1,68 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
-class Animal
+class Human
 {
-public:
-    Animal(float mass, char* gender, char* colour, int age) :Mass(mass), Age(age)
-    {
-        Gender = gender;
-        Color = colour;
-    }
-    virtual ~Animal()
-    {
-    }
-    const float GetMass() const
-    {
-        return Mass;
-    }
-    const char* GetGender() const
-    {
-        return Gender;
-    }
-    const char* GetColour() const
-    {
-        return Color;
-    }
-    const int GetAge() const
-    {
-        return Age;
-    }
-    Animal& operator --();
-protected:
-    float Mass;
-    char* Gender;
-    char* Color;
-    int Age;
-};
-
-class Dog :public Animal
-{
-public:
-    Dog(float mass, char* gender, char* color, int age, char* name, char* race, char* type) :
-        Animal(mass, gender, color, age)
-    {
-        Name = name;
-        Race = race;
-        Type = type;
-    }
-    ~Dog()
-    {
-    }
-    const char* GetName() const
-    {
-        return Name;
-    }
-    const char* GetType() const
-    {
-        return Type;
-    }
-    const char* GetRace() const
-    {
-        return Race;
-    }
 private:
-    char* Name;
-    char* Race;
-    char* Type;
+    string name;
+    string age;
+    string color_hair;
+    string weight;
+    string height;
+public:
+    string Get()
+    {
+        return name, age, color_hair, weight, height;
+    }
+    void Set(string name, string age, string color_hair, string weight, string height)
+    {
+        this->name = name;
+        this->age = age;
+        this->color_hair = color_hair;
+        this->weight = weight;
+        this->height = height;
+    }
+    void Show()
+    {
+        cout << "Имя: " << name << '\n' << "Возраст: " << age << '\n' << "Цвет волос: " << color_hair << '\n' << "Вес: " << weight << '\n' << "Рост: " << height << '\n';
+    }
+};
+ 
+class Student : public Human
+{
+public:
+    string group;
+
+    void ShowSt()
+    {
+        cout << "Студент" << '\n';
+    }
 };
 
-Animal& Animal::operator --()
+class Professor : public Human
 {
-    if (Mass >= 0.1)
-        Mass -= 0.1;
-    return *this;
-}
+public:
+    string subject;
+
+    void ShowPr()
+    {
+        cout << "Профессор" << '\n';
+    }
+ 
+};
 
 int main()
 {
-    Dog Shar(15.8, "m", "white", 2, "Sharik", "Angl dog", "Hunter");
-    cout << Shar.GetName() << '\n';
-    cout << Shar.GetType() << '\n';
-    cout << Shar.GetGender() << '\n';
-    cout << Shar.GetColour() << '\n';
-    cout << Shar.GetAge() << '\n';
-    cout << Shar.GetMass() << '\n';
-    --Shar;
-    cout << Shar.GetMass() << '\n';
+    setlocale(LC_ALL, "ru");
+    Student st;
+    st.Set("Павлов Федор", "18", "Чёрный", "85", "187");
+    st.ShowSt();
+    st.Show();
+    Professor pr;
+    pr.Set("Василий Иванович", "75", "Серый", "79", "190");
+    pr.ShowPr();
+    pr.Show();
+  
     return 0;
 }

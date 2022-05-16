@@ -1,68 +1,36 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Human
+class Base
 {
-private:
-    string name;
-    string age;
-    string color_hair;
-    string weight;
-    string height;
+    int x;
 public:
-    string Get()
-    {
-        return name, age, color_hair, weight, height;
-    }
-    void Set(string name, string age, string color_hair, string weight, string height)
-    {
-        this->name = name;
-        this->age = age;
-        this->color_hair = color_hair;
-        this->weight = weight;
-        this->height = height;
-    }
-    void Show()
-    {
-        cout << "Имя: " << name << '\n' << "Возраст: " << age << '\n' << "Цвет волос: " << color_hair << '\n' << "Вес: " << weight << '\n' << "Рост: " << height << '\n';
-    }
-};
- 
-class Student : public Human
-{
-public:
-    string group;
-
-    void ShowSt()
-    {
-        cout << "Студент" << '\n';
-    }
+    void setX(int n) { x = n; }
+    void show() { cout << "- - - - - - - -" << '\n'; }
+    void showX() { cout << "x = " << x << '\n'; }
 };
 
-class Professor : public Human
+class Derived : public Base
 {
+    int y;
 public:
-    string subject;
-
-    void ShowPr()
-    {
-        cout << "Профессор" << '\n';
-    }
- 
+    void setY(int n) { y = n; }
+    void showY() { cout << "y = " << y << '\n'; }
 };
 
 int main()
 {
-    setlocale(LC_ALL, "ru");
-    Student st;
-    st.Set("Павлов Федор", "18", "Чёрный", "85", "187");
-    st.ShowSt();
-    st.Show();
-    Professor pr;
-    pr.Set("Василий Иванович", "75", "Серый", "79", "190");
-    pr.ShowPr();
-    pr.Show();
-  
+    setlocale(LC_ALL, "RU");
+    Base ob;
+    ob.setX(5);
+    ob.showX();
+    ob.show();
+
+    Derived od;
+    od.setX(10);
+    od.setY(20);
+    od.showX();
+    od.showY();
+
     return 0;
 }
